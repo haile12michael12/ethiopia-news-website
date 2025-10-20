@@ -1,73 +1,95 @@
-# React + TypeScript + Vite
+# Ethiopia News Website - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend application for the Ethiopia News Website, built with React, TypeScript, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js (version 16 or higher)
+- npm (comes with Node.js)
 
-## React Compiler
+## Setup Instructions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Navigate to the frontend directory:**
+   ```bash
+   cd frontend
+   ```
 
-## Expanding the ESLint configuration
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+5. **Preview the production build:**
+   ```bash
+   npm run preview
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Development Server
+
+The development server will start on port 3001 by default, but will automatically find another available port if 3001 is in use.
+
+- Local URL: http://localhost:3002/ (or another available port)
+- Network URLs: Available on your local network for testing on other devices
+
+## Project Structure
+
+- `src/` - Main source code
+  - `components/` - React components
+  - `pages/` - Page components
+  - `services/` - API service functions
+  - `types/` - TypeScript types
+  - `utils/` - Utility functions
+  - `i18n/` - Internationalization setup
+- `public/` - Static assets
+- `src/index.css` - Global CSS styles with Tailwind directives
+
+## Technologies Used
+
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- Axios for API requests
+- i18next for internationalization
+- TanStack Query for data fetching
+- React Toastify for notifications
+
+## Available Languages
+
+The application supports 4 languages:
+- English (en)
+- Amharic (am)
+- Oromo (om)
+- Tigrinya (ti)
+
+## API Integration
+
+The frontend connects to a backend API running on port 8000 with the following proxies:
+- `/api` → `http://localhost:8000`
+- `/uploads` → `http://localhost:8000`
+- `/ws` → `ws://localhost:8000` (WebSocket)
+
+Make sure the backend is running for full functionality.
+
+## Troubleshooting
+
+### PostCSS/Tailwind CSS Issues
+
+If you encounter PostCSS errors related to Tailwind CSS, ensure you have the correct package installed:
+
+```bash
+npm install @tailwindcss/postcss --save-dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The PostCSS configuration should use `'@tailwindcss/postcss': {}` as the plugin name in `postcss.config.js`.
