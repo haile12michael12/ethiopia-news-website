@@ -36,9 +36,9 @@ This is the frontend application for the Ethiopia News Website, built with React
 
 ## Development Server
 
-The development server will start on port 3001 by default, but will automatically find another available port if 3001 is in use.
+The development server will start on port 3001 by default, but will automatically find another available port if needed.
 
-- Local URL: http://localhost:3002/ (or another available port)
+- Local URL: http://localhost:3004/ (or another available port)
 - Network URLs: Available on your local network for testing on other devices
 
 ## Project Structure
@@ -93,3 +93,8 @@ npm install @tailwindcss/postcss --save-dev
 ```
 
 The PostCSS configuration should use `'@tailwindcss/postcss': {}` as the plugin name in `postcss.config.js`.
+
+If you continue to experience issues, try:
+1. Clearing the npm cache: `npm cache clean --force`
+2. Removing node_modules and package-lock.json
+3. Reinstalling dependencies: `npm install`
